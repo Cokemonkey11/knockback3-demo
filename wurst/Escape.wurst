@@ -1,0 +1,26 @@
+package Escape
+    import Knockback3
+
+    function c() returns bool
+        let count = GetRandomInt(1, 5)
+
+        for i = 0 to count - 1
+            let power = GetRandomReal(50., 2000.)
+            let angle = GetRandomReal(0.,  2.*bj_PI)
+            let alpha = GetRandomReal(0., bj_PI)
+            let u     = CreateUnit(Player(0), 'hfoo', 0., 0., 0.)..addAbility('Aloc')
+                                                                 ..setTimedLife(10.)
+
+            SetUnitExploded(u, true)
+
+            Knockback3.add(u, power, angle, alpha)
+
+        return false
+
+
+    init
+        FogEnable(    false)
+        FogMaskEnable(false)
+
+        CreateTrigger()..registerPlayerEvent(Player(0), EVENT_PLAYER_END_CINEMATIC)
+                       ..addCondition(Condition(function c))
