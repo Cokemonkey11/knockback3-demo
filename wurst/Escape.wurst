@@ -3,6 +3,7 @@ package Escape
 
     function c() returns bool
         let count = GetRandomInt(1, 5)
+        Knockback3.frictionFxThreshold          = GetRandomReal(100., 1000.)
 
         for i = 0 to count - 1
             let power = GetRandomReal(50., 2000.)
@@ -21,6 +22,8 @@ package Escape
     init
         FogEnable(    false)
         FogMaskEnable(false)
+
+        Knockback3.restitutionCoefficientGround = .8
 
         CreateTrigger()..registerPlayerEvent(Player(0), EVENT_PLAYER_END_CINEMATIC)
                        ..addCondition(Condition(function c))
