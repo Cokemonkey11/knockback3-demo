@@ -1,0 +1,21 @@
+package Tinker
+    import RegisterEvents
+    import ClosureTimers
+    import Knockback3
+
+    constant ID_TINKER           = 'Ntin'
+    constant ID_CLUSTER_ROCKETS  = 'ANcs'
+    constant ID_MANA_BONUS       = 'AIbm'
+    constant ID_MANA_REGEN_BONUS = 'AIrm'
+
+    let tinker = createUnit(Player(0), ID_TINKER, vec2(0., -1000.), angle(0.))
+                    ..addAbility(ID_CLUSTER_ROCKETS)
+                    ..addAbility(ID_MANA_BONUS)
+                    ..addAbility(ID_MANA_REGEN_BONUS)
+    init
+        registerSpellEffectEvent(ID_CLUSTER_ROCKETS, () -> begin
+            let targ = vec2(GetSpellTargetX(), GetSpellTargetY())
+            doAfter(.3, () -> begin
+                Knockback3.add(tinker, targ, 600.)
+            end)
+        end)

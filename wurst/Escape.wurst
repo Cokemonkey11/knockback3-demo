@@ -25,5 +25,7 @@ package Escape
 
         Knockback3.restitutionCoefficientGround = .8
 
+        print("Press escape to do stuff :D")
+
         CreateTrigger()..registerPlayerEvent(Player(0), EVENT_PLAYER_END_CINEMATIC)
                        ..addCondition(Condition(function c))
