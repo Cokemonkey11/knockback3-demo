@@ -2,3 +2,5 @@
 objectEditingOutput/
 wurst.dependencies
 wurst/war3map.j
+.vscode/
+_build/
