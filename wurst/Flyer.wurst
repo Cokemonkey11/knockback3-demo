@@ -10,8 +10,6 @@ let flyer = createUnit(players[0], ID_FLYER, vec2(256., -1000.), angle(0.))
 init
     CreateTrigger()..registerUnitEvent(flyer, EVENT_UNIT_ISSUED_POINT_ORDER)
     ..addAction() ->
-        print("x")
         if EventData.getIssuedOrderId() == OrderIds.smart
-            print("y")
-            let target = EventData.getOrderTargetPos()
+            let target = EventData.getOrderPos()
             Knockback3.add(flyer, target, 600.)
