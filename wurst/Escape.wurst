@@ -25,9 +25,6 @@ package Escape
         FogEnable(false)
         FogMaskEnable(false)
 
-        Knockback3.restitutionCoefficientGround = .8
-        Knockback3.frictionFxThreshold = GetRandomReal(100., 1000.)
-
         print("Press escape to spawn units with knockback")
 
         CreateTrigger()..registerPlayerEvent(Player(0), EVENT_PLAYER_END_CINEMATIC)
